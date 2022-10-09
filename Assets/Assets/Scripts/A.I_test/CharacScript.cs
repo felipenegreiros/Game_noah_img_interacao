@@ -23,6 +23,7 @@ public class CharacScript : MonoBehaviour
     //anim
     [SerializeField] GameObject ThisGuyrig;
     [SerializeField] GameObject bala;
+    [SerializeField] GameObject Sword;
     [SerializeField] GameObject ps;
 
     public Vector3 characPosition;
@@ -85,14 +86,21 @@ public class CharacScript : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        characPosition = transform.position;
-        characRotation = transform.rotation;
-        if (bala.tag == "balah")
+        //characPosition = transform.position;
+        // characRotation = transform.rotation;
+        if (collision.gameObject.tag == "balah"|| collision.gameObject.tag == "Face")
         {
             RagdollOn();
             Instantiate(ps, characPosition, characRotation);
-            //Debug.Log("pow");
+            Debug.Log("pow");
         }
+       // if (bala.tag == "balah" || Sword.tag == "balah")
+       // {
+       //     RagdollOn();
+       //     Instantiate(ps, characPosition, characRotation);
+            //Debug.Log("pow");
+       // }
+
     }
     // Update is called once per frame
     void Update()
